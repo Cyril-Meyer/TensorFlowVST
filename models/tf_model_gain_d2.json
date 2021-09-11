@@ -1,0 +1,146 @@
+{
+  "architecture": {
+    "backend": "tensorflow",
+    "class_name": "Functional",
+    "config": {
+      "input_layers": [
+        [
+          "input_1",
+          0,
+          0
+        ]
+      ],
+      "layers": [
+        {
+          "class_name": "InputLayer",
+          "config": {
+            "batch_input_shape": [
+              null,
+              null,
+              1
+            ],
+            "dtype": "float32",
+            "name": "input_1",
+            "ragged": false,
+            "sparse": false
+          },
+          "inbound_nodes": [],
+          "name": "input_1"
+        },
+        {
+          "class_name": "Conv1D",
+          "config": {
+            "activation": "linear",
+            "activity_regularizer": null,
+            "batch_input_shape": [
+              null,
+              null,
+              1
+            ],
+            "bias_constraint": null,
+            "bias_initializer": {
+              "class_name": "Zeros",
+              "config": {}
+            },
+            "bias_regularizer": null,
+            "data_format": "channels_last",
+            "dilation_rate": [
+              1
+            ],
+            "dtype": "float32",
+            "filters": 1,
+            "groups": 1,
+            "kernel_constraint": null,
+            "kernel_initializer": {
+              "class_name": "GlorotUniform",
+              "config": {
+                "seed": null
+              }
+            },
+            "kernel_regularizer": null,
+            "kernel_size": [
+              1
+            ],
+            "name": "conv1d",
+            "padding": "same",
+            "strides": [
+              1
+            ],
+            "trainable": true,
+            "use_bias": true
+          },
+          "inbound_nodes": [
+            [
+              [
+                "input_1",
+                0,
+                0,
+                {}
+              ]
+            ]
+          ],
+          "name": "conv1d"
+        }
+      ],
+      "name": "sequential",
+      "output_layers": [
+        [
+          "conv1d",
+          0,
+          0
+        ]
+      ]
+    },
+    "keras_version": "2.6.0"
+  },
+  "hash": "c1024cdce56edcb554a11f35834941c245830105a3e00b9022ca3beeee1e7b49",
+  "image_data_format": "channels_last",
+  "input_shapes": [
+    [
+      null,
+      1
+    ]
+  ],
+  "output_shapes": [
+    [
+      null,
+      1
+    ]
+  ],
+  "tests": [
+    {
+      "inputs": [
+        {
+          "shape": [
+            32,
+            1
+          ],
+          "values": [
+            "j2sWP5QOTD86/n8+c+6xv7sFGD+yyyM/SXq2P/xWyD73h/M+SkATP9nxu78R+bo+GWmqP15e0zxDJau+cw+1v6aFhz+EFgS/bTZvv70uXL7SIsw9t0o4vvPMXD9RPRS/vqjhvfdRfz4kZqq/tEHBv/9Xzj7SpjK9WedcvwxaJD8="
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "shape": [
+            32,
+            1
+          ],
+          "values": [
+            "j2uWPpQOzD46/v89c+4xv7sFmD6yy6M+SXo2P/xWSD73h3M+SkCTPtnxO78R+To+GWkqP15eUzxDJSu+cw81v6aFBz+EFoS+bTbvvr0u3L3SIkw9t0q4vfPM3D5RPZS+vqhhvfdR/z0kZiq/tEFBv/9XTj7SprK8WefcvgxapD4="
+          ]
+        }
+      ]
+    }
+  ],
+  "trainable_params": {
+    "conv1d": {
+      "bias": [
+        "AAAAAA=="
+      ],
+      "weights": [
+        "AAAAPw=="
+      ]
+    }
+  }
+}
