@@ -34,6 +34,7 @@ private:
     TensorFlowVSTAudioProcessor& audioProcessor;
 
     std::unique_ptr<juce::FilenameComponent> fileComp;
+    std::unique_ptr<juce::HyperlinkButton> link;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TensorFlowVSTAudioProcessorEditor)
 };

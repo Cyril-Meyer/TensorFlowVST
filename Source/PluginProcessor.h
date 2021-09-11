@@ -57,9 +57,12 @@ public:
     void setStateInformation (const void* data, int sizeInBytes) override;
 
     //==============================================================================
-    std::optional<fdeep::model> model;
+    void loadModel();
+    juce::File modelFile;
 
 private:
+    //==============================================================================
+    std::optional<fdeep::model> model;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TensorFlowVSTAudioProcessor)
 };
