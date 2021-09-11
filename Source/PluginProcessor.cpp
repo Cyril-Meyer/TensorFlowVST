@@ -172,22 +172,36 @@ juce::AudioProcessorEditor* TensorFlowVSTAudioProcessor::createEditor()
 //==============================================================================
 void TensorFlowVSTAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
-    MemoryOutputStream(destData, true).writeString(modelFile.getFullPathName());
+    MemoryOutputStream(destData, true).writeString(modelFullPathName);
 }
 
 void TensorFlowVSTAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    modelFile = juce::File(MemoryInputStream(data, static_cast<size_t> (sizeInBytes), false).readString());
+    modelFullPathName = MemoryInputStream(data, static_cast<size_t> (sizeInBytes), false).readString();
     loadModel();
 }
 
 void TensorFlowVSTAudioProcessor::loadModel()
 {
+    model.reset();
+    modelFileName = "no model loaded";
+    juce::File modelFile(modelFullPathName);
+
     if (!modelFile.existsAsFile())
         return;
 
-    std::optional<fdeep::model> tmp_model = fdeep::load_model(modelFile.getFullPathName().toStdString());
+    std::optional<fdeep::model> tmp_model;
+    try
+    {
+        tmp_model = fdeep::load_model(modelFile.getFullPathName().toStdString());
+    }
+    catch (...) {
+        modelFileName = "error loading the model";
+        return;
+    }
+
     model = tmp_model;
+    modelFileName = modelFile.getFileName();
 }
 
 //==============================================================================

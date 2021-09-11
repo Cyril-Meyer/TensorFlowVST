@@ -46,7 +46,7 @@ void TensorFlowVSTAudioProcessorEditor::paint (juce::Graphics& g)
     g.setColour(juce::Colours::white);
     g.setFont(15.0f);
     g.drawFittedText("TensorFlowVST", 0, 0, getWidth(), 30, juce::Justification::centred, 1);
-    g.drawFittedText(audioProcessor.modelFile.getFileName(), 0, 80, getWidth(), 30, juce::Justification::centred, 1);
+    g.drawFittedText(audioProcessor.modelFileName, 0, 80, getWidth(), 30, juce::Justification::centred, 1);
 }
 
 void TensorFlowVSTAudioProcessorEditor::resized()
@@ -60,7 +60,8 @@ void TensorFlowVSTAudioProcessorEditor::filenameComponentChanged(juce::FilenameC
 {
     if (fileComponentThatHasChanged == fileComp.get())
     {
-        audioProcessor.modelFile = fileComp->getCurrentFile();
+        audioProcessor.modelFullPathName = fileComp->getCurrentFile().getFullPathName();
         audioProcessor.loadModel();
+        repaint();
     }
 }

@@ -58,7 +58,8 @@ public:
 
     //==============================================================================
     void loadModel();
-    juce::File modelFile;
+    juce::String modelFullPathName;
+    juce::String modelFileName;
 
 private:
     //==============================================================================
